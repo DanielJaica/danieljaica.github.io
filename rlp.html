@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Generador de Versículos Diarios</h1>
+<p>by Daniel.</p>
+
+<label for="fname">Fecha de Inicio : </label><input type="date" id="fname" name="fname"><br><br>
+
+<b>Raw Information</b><br>
+<textarea id="verses" rows="10" cols="50" placeholder="Aquí viene la información del Excel."></textarea><br>
+
+<p>
+    Citas Ingresadas :
+    <span id="show">0</span>
+  </p>
+
+
+<script>
+    document
+      .querySelector("#verses")
+      .addEventListener("input", function countWord() {
+        let res = [];
+        let str = this.value.replace(/[\t\n\r\.\?\!]/gm, " ").split("|");
+        str.map((s) => {
+          let trimStr = s.trim();
+          if (trimStr.length > 0) {
+            res.push(trimStr);
+          }
+        });
+        document.querySelector("#show").innerText = res.length;
+      });
+  </script>
+
+
+</body>
+</html>
